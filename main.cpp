@@ -1,8 +1,4 @@
-#include <fstream>
-#include <sstream>
-#include <vector>
-#include <string>
-#include <iostream>
+#include "ft_linear_regression.hpp"
 
 void ft_fatal(std::string error) {
 	std::cerr << "ERROR: " << error << std::endl;
