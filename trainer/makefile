@@ -1,4 +1,4 @@
-NAME=trainer
+NAME=theta_finder
 SRCS=*.cpp
 FLAGS=-Wall -Wextra -Werror
 OBJ=(SRCS.c:.o)
@@ -10,7 +10,7 @@ clean:
 	rm -rf $(NAME)
 
 fclean: clean
-	rm -rf .o
+	rm -rf $(OBJS)
 
 all:
 	$(NAME)

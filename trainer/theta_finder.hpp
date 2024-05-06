@@ -1,5 +1,5 @@
-#ifndef TRAINER_HPP
-# define TRAINER_HPP
+#ifndef THETA_FINDER_HPP
+# define THETA_FINDER_HPP
 
 # include <fstream>
 # include <sstream>
