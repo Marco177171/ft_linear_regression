@@ -1,4 +1,4 @@
-NAME=ft_linear_regression
+NAME=trainer
 SRCS=*.cpp
 FLAGS=-Wall -Wextra -Werror
 OBJ=(SRCS.c:.o)

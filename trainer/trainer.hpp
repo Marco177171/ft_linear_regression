@@ -1,5 +1,5 @@
-#ifndef FT_LINEAR_REGRESSION_HPP
-# define FT_LINEAR_REGRESSION_HPP
+#ifndef TRAINER_HPP
+# define TRAINER_HPP
 
 # include <fstream>
 # include <sstream>
