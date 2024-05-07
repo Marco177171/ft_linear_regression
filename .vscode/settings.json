@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "vector": "cpp",
         "array": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
@@ -19,7 +20,6 @@
         "deque": "cpp",
         "string": "cpp",
         "unordered_map": "cpp",
-        "vector": "cpp",
         "exception": "cpp",
         "algorithm": "cpp",
         "functional": "cpp",

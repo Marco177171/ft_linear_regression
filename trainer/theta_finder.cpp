@@ -65,11 +65,10 @@ void ft_linear_regression(std::vector<std::pair <double, double>> *dataVector) {
 	std::cout << "theta_0 (intercept): " << theta_0 << std::endl;
 	std::cout << "theta_1 (slope): " << theta_1 << std::endl;
 	if (outputFile.is_open()) {
-		outputFile << "theta,value" << std::endl;
-		outputFile << "theta0," << theta_0 << std::endl; // write theta0 to the file
-		outputFile << "theta1," << theta_1 << std::endl; // write theta1 to the file
+		outputFile << "theta0,theta1" << std::endl;
+		outputFile << theta_0  << "," << theta_1 << std::endl; // write thetas to the file
 		outputFile.close();
-		std::cout << "Data was written to 'theta.csv'" << std::endl;
+		debug("Data was written to 'theta.csv'");
 	}
 	else {
 		ft_fatal("Could not open theta output file");
@@ -81,7 +80,6 @@ int main(int argc, char *argv[]) {
 		ft_fatal("wrong arguments");
 
 	std::ifstream file(argv[1]);
-
 	if (!file.is_open()) {
 		std::cerr << "Error opening file." << std::endl;
 		return 1;
