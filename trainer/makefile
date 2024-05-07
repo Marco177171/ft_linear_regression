@@ -1,18 +1,17 @@
-NAME=theta_finder
-SRCS=*.cpp
-FLAGS=-Wall -Wextra -Werror
-OBJ=(SRCS.c:.o)
+NAME = theta_finder
+SRCS = *.cpp
+FLAGS = -Wall -Wextra -Werror
+OBJ = $(SRCS:.cpp=.o)
 
-name:
+name: $(OBJ)
 	g++ $(FLAGS) $(SRCS) -o $(NAME)
 
+all: $(NAME)
+
 clean:
-	rm -rf $(NAME)
+	rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(OBJS)
+	rm -rf $(NAME)
 
-all:
-	$(NAME)
-
-re:	fclean all
+re: fclean all
