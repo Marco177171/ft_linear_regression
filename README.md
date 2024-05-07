@@ -1,4 +1,5 @@
-### FT Linear Regression
+# FT Linear Regression
 
-#### Introduction
+## Introduction
+
 The aim of this project is to introduce you to the basic concept behind machine learning.
