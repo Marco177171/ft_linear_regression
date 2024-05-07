@@ -62,8 +62,6 @@ void ft_linear_regression(std::vector<std::pair <double, double>> *dataVector) {
 
 int main(int argc, char *argv[]) {
 
-	std::vector<std::pair<double, double>> dataVector;
-
 	if (argc != 2)
 		ft_fatal("wrong arguments");
 
@@ -82,7 +80,7 @@ int main(int argc, char *argv[]) {
 		std::cout << "Key: " << it->first << ", Value: " << it->second << std::endl;
 	file.close();
 
-	ft_linear_regression(&dataVector);
+	ft_linear_regression(&keyValuePairs);
 
 	return 0;
 }
