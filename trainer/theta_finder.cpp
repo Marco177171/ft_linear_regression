@@ -39,7 +39,7 @@ void ft_linear_regression(std::vector<std::pair <double, double>> *dataVector) {
 
 	// find the average values for X and Y
 	it = dataVector->begin();
-	while (it++ != dataVector->end()) {
+	while (++it != dataVector->end()) {
 		mean_x += it->first;
 		mean_y += it->second;
 	}
@@ -52,10 +52,9 @@ void ft_linear_regression(std::vector<std::pair <double, double>> *dataVector) {
 
 	// find theta 1 and 0
 	it = dataVector->begin();
-	while (it != dataVector->end()) {
+	while (++it != dataVector->end()) {
 		numerator += (it->first - mean_x) * (it->second - mean_y);
 		denominator += (it->first - mean_x) * (it->first - mean_x);
-		it++;
 	}
 	theta_1 = numerator / denominator; // slope of the line. Descendent if negative
 	theta_0 = mean_y - theta_1 * mean_x; // value of Y where x = 0 (intercept)
