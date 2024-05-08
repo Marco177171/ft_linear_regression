@@ -18,12 +18,12 @@ void visualize(std::vector<std::pair<double, double>> *dataVector, double theta0
 	it = dataVector->begin();
 	while (++it != dataVector->end()) {
 		it->first = it->first / greatest_X * 800;
-		it->second = it->second / greatest_Y * 600;
+		it->second = it->second / greatest_Y * 450;
 	}
 	std::cout << "window normalization executed" << std::endl;
 
 	// normalize theta0 with window's height: when X = 0 Y must be...
-	theta0 = theta0 / greatest_Y * 600;
+	theta0 = theta0 / greatest_Y * 450;
 
 	// Initialize SDL
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -32,7 +32,7 @@ void visualize(std::vector<std::pair<double, double>> *dataVector, double theta0
 	}
 
 	// Create a window
-	SDL_Window *window = SDL_CreateWindow("Linear Regression Visualization", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+	SDL_Window *window = SDL_CreateWindow("Linear Regression Visualization", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 450, SDL_WINDOW_SHOWN);
 	if (window == nullptr) {
 		std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
 		SDL_Quit();
@@ -56,9 +56,9 @@ void visualize(std::vector<std::pair<double, double>> *dataVector, double theta0
 	SDL_SetRenderDrawColor(renderer, 48, 48, 48, 255);
 	int x_index = -1, y_index = -1;
 	while (++x_index < 800) {
-		while (++y_index < 600) {
+		while (++y_index < 450) {
 			if ((x_index % static_cast<int>(greatest_X / 800) == 0) ||
-				y_index % static_cast<int>(greatest_Y / 600) == 0)
+				y_index % static_cast<int>(greatest_Y / 450) == 0)
 				SDL_RenderDrawPoint(renderer, x_index, y_index);
 		}
 		y_index = 0;
