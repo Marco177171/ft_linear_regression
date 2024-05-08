@@ -68,7 +68,8 @@ void ft_linear_regression(std::vector<std::pair <double, double>> *dataVector) {
 		outputFile << "theta0,theta1" << std::endl;
 		outputFile << theta_0  << "," << theta_1 << std::endl; // write thetas to the file
 		outputFile.close();
-		debug("Data was written to 'theta.csv'");
+		debug("Data was written to 'thetas.csv'");
+		visualize(dataVector, theta_0, theta_1);
 	}
 	else {
 		ft_fatal("Could not open theta output file");

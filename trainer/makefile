@@ -3,15 +3,15 @@ SRCS = *.cpp
 FLAGS = -Wall -Wextra -Werror
 OBJ = $(SRCS:.cpp=.o)
 
-name: $(OBJ)
-	g++ $(FLAGS) $(SRCS) -o $(NAME)
+name:	$(OBJ)
+		g++ $(FLAGS) $(SRCS) -o $(NAME) -lSDL2 -lSDL2_ttf
 
-all: $(NAME)
+all:	$(NAME)
 
 clean:
-	rm -rf $(OBJ)
+		rm -rf $(OBJ)
 
-fclean: clean
-	rm -rf $(NAME)
+fclean:	clean
+		rm -rf $(NAME) thetas.csv
 
-re: fclean all
+re:		fclean all
