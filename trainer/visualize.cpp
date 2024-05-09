@@ -5,7 +5,6 @@ void visualize(std::vector<std::pair<double, double>> *dataVector, double theta0
 	double greatest_Y = 0.0;
 	std::vector<std::pair<double, double>>::iterator it;
 
-
 	it = dataVector->begin();
 	while (++it != dataVector->end()) {
 		if (it->first > greatest_X)
@@ -15,15 +14,19 @@ void visualize(std::vector<std::pair<double, double>> *dataVector, double theta0
 	}
 	std::cout << "greatest X = " << greatest_X << " | greatest Y = " << greatest_Y << std::endl;
 
+	// normalize points' coordinates with window's measures
 	it = dataVector->begin();
-	while (++it != dataVector->end()) {
+	while (it != dataVector->end()) {
 		it->first = it->first / greatest_X * 800;
-		it->second = it->second / greatest_Y * 450;
+		it->second = 450 - it->second / greatest_Y * 400; // Invert Y-coordinate
+		++it;
 	}
 	std::cout << "window normalization executed" << std::endl;
 
 	// normalize theta0 with window's height: when X = 0 Y must be...
-	theta0 = theta0 / greatest_Y * 450;
+	theta0 /= greatest_Y * 450;
+	// mirror theta1 (slope) on x axis
+	theta1 *= -10;
 
 	// Initialize SDL
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -57,32 +60,26 @@ void visualize(std::vector<std::pair<double, double>> *dataVector, double theta0
 	int x_index = -1, y_index = -1;
 	while (++x_index < 800) {
 		while (++y_index < 450) {
-			if ((x_index % static_cast<int>(greatest_X / 800) == 0) ||
-				y_index % static_cast<int>(greatest_Y / 450) == 0)
+			if (((x_index * -1) % static_cast<int>(greatest_X / 800) == 0) ||
+				((y_index * -1) % static_cast<int>(greatest_Y / 450) == 0)) {
 				SDL_RenderDrawPoint(renderer, x_index, y_index);
+			}
 		}
-		y_index = 0;
+		y_index = -1;
 	}
 
 	// Draw regression line
-	SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255); // Yellow color for regression line
+	SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255); // Purple color for regression line
 	for (int x = 0; x < 800; ++x) {
-		int y = theta0 + theta1 * x;
-		SDL_RenderDrawPoint(renderer, x, y);
+		int y = static_cast<int>(theta0 + theta1 * x);
+		SDL_RenderDrawPoint(renderer, x, y); // Invert Y-coordinate
 	}
-
 	// Draw data points
 	it = dataVector->begin();
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255); // Yellow color for data points
 	while (++it != dataVector->end()) {
 		std::cout << "drawing " << it->first << " | " << it->second << std::endl;
-		int x = -2;
-		while (++x < 3) {
-			int y = -2;
-			while (++y < 3) {
-				SDL_RenderDrawPoint(renderer, static_cast<int>(it->first) + x, static_cast<int>(it->second) + y);
-			}
-		}
+			SDL_RenderDrawPoint(renderer, it->first, it->second);
 	}
 
 	// Present the renderer
