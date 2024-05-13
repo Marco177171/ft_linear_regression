@@ -17,8 +17,8 @@ void visualize(std::vector<std::pair<double, double>> *dataVector, double theta0
 	// normalize points' coordinates with window's measures
 	it = dataVector->begin();
 	while (it != dataVector->end()) {
-		it->first = it->first / greatest_X * 800;
-		it->second = 450 - it->second / greatest_Y * 400; // Invert Y-coordinate
+		it->first = it->first * 800 / greatest_X;
+		it->second = 450 - it->second * 450 / greatest_Y; // Invert Y-coordinate
 		++it;
 	}
 	std::cout << "window normalization executed" << std::endl;
@@ -58,8 +58,8 @@ void visualize(std::vector<std::pair<double, double>> *dataVector, double theta0
 	// Draw grid
 	SDL_SetRenderDrawColor(renderer, 48, 48, 48, 255);
 	int x_index = -1, y_index = -1;
-	while (++x_index < 800) {
-		while (++y_index < 450) {
+	while (++x_index <= 800) {
+		while (++y_index <= 450) {
 			if (((x_index * -1) % static_cast<int>(greatest_X / 800) == 0) ||
 				((y_index * -1) % static_cast<int>(greatest_Y / 450) == 0)) {
 				SDL_RenderDrawPoint(renderer, x_index, y_index);
