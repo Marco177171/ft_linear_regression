@@ -7,7 +7,7 @@
 # include <string>
 # include <iostream>
 # include <SDL2/SDL.h>
-# include <SDL2/SDL_ttf.h>
+# include <SDL2/SDL_types.h>
 
 void visualize(std::vector<std::pair<double, double>> *dataVector, double theta0, double theta1);
 

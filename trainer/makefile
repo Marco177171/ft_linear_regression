@@ -4,7 +4,7 @@ FLAGS = -Wall -Wextra -Werror
 OBJ = $(SRCS:.cpp=.o)
 
 name:	$(OBJ)
-		g++ $(FLAGS) $(SRCS) -o $(NAME) -lSDL2 -lSDL2_ttf
+		g++ $(FLAGS) $(SRCS) -o $(NAME) -I./../sdl2/include/SDL2/SDL -I./../sdl2/include/SDL2/SDL_types -lSDL2
 
 all:	$(NAME)
 
